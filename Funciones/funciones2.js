@@ -36,14 +36,16 @@ do {
 palabrasRepetidas(arrayPalabras);
 
 function palabrasRepetidas(arrayPalabras) {
-  var palabra2 = '';
-  //Creo un mapa
   const mapa = new Map();
 
   for (let index = 0; index < arrayPalabras.length; index++) {
+    //Si la clave no se repite entonces se establece como 1
     if (!mapa.has(arrayPalabras[index])) {
       mapa.set(arrayPalabras[index], 1);
+
+      //Si la clave se introduce de nuevo entonces aumenta el contador
     } else {
+      //Recorro el mapa obteniendo los valores para sumar
       for (const valor of mapa.values()) {
         var contadorNumero = parseInt(valor);
         mapa.set(arrayPalabras[index], contadorNumero + 1);
@@ -58,6 +60,6 @@ function palabrasRepetidas(arrayPalabras) {
   document.write('<br>');
 
   for (const valor of mapa.values()) {
-    document.write(valor + '| ');
+    document.write(valor + '   ' + '| ');
   }
 }
