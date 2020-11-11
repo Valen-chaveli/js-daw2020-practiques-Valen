@@ -37,39 +37,27 @@ palabrasRepetidas(arrayPalabras);
 
 function palabrasRepetidas(arrayPalabras) {
   var palabra2 = '';
-
   //Creo un mapa
   const mapa = new Map();
 
-  //Recorro el array
   for (let index = 0; index < arrayPalabras.length; index++) {
-    //Guardo cada palabra del array
-    palabra2 = arrayPalabras[index];
-
-    //Vuelvo a recorrer el array para compara cada palabra
-    for (let j = 0; j < arrayPalabras.length; j++) {
-      //Guardo la palabra
-      var palabra3 = arrayPalabras[j];
-
-      //Comparo si se repite
-      if (palabra2 == palabra3) {
-        //Si se repite la palabra aumento el contador
-        contadorPalabraRepetida++;
-
-        //Pongo en el mapa la clave y el valor(veces que se repite)
-        mapa.set(arrayPalabras[index], contadorPalabraRepetida);
-      } else {
-        //Si no se repite entonces solo contiene la palabra 1 vez
-        mapa.set(arrayPalabras[index], 1);
+    if (!mapa.has(arrayPalabras[index])) {
+      mapa.set(arrayPalabras[index], 1);
+    } else {
+      for (const valor of mapa.values()) {
+        var contadorNumero = parseInt(valor);
+        mapa.set(arrayPalabras[index], contadorNumero + 1);
       }
     }
-
-    //Reinicio el contador para cada palabra que se analiza
-    contadorPalabraRepetida = 0;
   }
 
-  //Muestro el mapa
-  console.log('-----------');
-  console.log(mapa);
-  console.log('-----------');
+  for (const key of mapa.keys()) {
+    document.write(key + ' | ');
+  }
+
+  document.write('<br>');
+
+  for (const valor of mapa.values()) {
+    document.write(valor + '| ');
+  }
 }
