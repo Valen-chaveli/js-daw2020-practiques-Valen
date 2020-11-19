@@ -2,8 +2,8 @@
 /**
  * Funcion constructora que se encarga de crear un objeto para
  * represetar puntos de 2 coordenadas
- * @param {int} x Representa la coordenada x
- * @param {int} y Representa la coordenada y
+ * @param {number} x Representa la coordenada x
+ * @param {number} y Representa la coordenada y
  */
 function Punto(x, y) {
   //Compruebo si es un numero
