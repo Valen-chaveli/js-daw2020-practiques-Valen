@@ -1,5 +1,10 @@
 'use strict';
-
+/**
+ * Funcion constructora que se encarga de crear un objeto para
+ * represetar puntos de 2 coordenadas
+ * @param {int} x Representa la coordenada x
+ * @param {int} y Representa la coordenada y
+ */
 function Punto(x, y) {
   //Compruebo si es un numero
   if (isNaN(x) || isNaN(y)) {
@@ -15,6 +20,11 @@ function Punto(x, y) {
     return new Punto(this.x, this.y);
   };
 
+  /**
+   *Cambia las coordenadas x e y del objeto
+   * @param {nt} x2 Representa la coordenada  x a la cual se desea cambiar
+   * @param {Int} y2 Representa la coordenada yx a la cual se desea cambiar
+   */
   this.cambiar = (x2, y2) => {
     this.x = x2;
     this.y = y2;
@@ -28,18 +38,35 @@ function Punto(x, y) {
   this.mostrarCoordenadas = () => this.x + ' | ' + this.y;
 }
 
-var p = new Punto(5, 10);
-var p2 = new Punto(2, 4);
-var pCopia = p.copiar();
+console.log('------- PRUEBAS DE FUNCIONAMIENTO -----');
+var P1 = new Punto(5, 10);
+var P2 = new Punto(2, 4);
 
-var p3 = new Punto(10, 20);
-var puntoSuma = p.suma(p3);
+console.log('Valores del Punto 1: | X = ' + P1.x + ' | Y = ' + P1.y + ' |');
+console.log('<<Cambio los valores del Punto 1>>');
+P1.cambiar(15, 30);
+console.log(
+  'Valores del Punto 1 cambiados: | X = ' + P1.x + ' | Y = ' + P1.y + ' |'
+);
+var P1Copia = P1.copiar();
 
-alert('La suma X de los puntos es ' + puntoSuma.x);
-alert('La suma y de los puntos es ' + puntoSuma.y);
-var nuevoPuntoSuma = alert(pCopia.mostrarCoordenadas());
-alert(p.mostrarCoordenadas());
+console.log(
+  'Valores del la copia del Punto 1: | X = ' +
+    P1Copia.x +
+    ' | Y = ' +
+    P1Copia.y +
+    ' |'
+);
 
-//La zona de prototipo es una zona que comparten todos los objetos de ese prototipo
-//Si modificamos el prototipo de Punto todos los objetos de punto tendran esa nueva propiedad o metodo
-console.log(Punto.__proto__);
+var P3 = new Punto(10, 20);
+
+console.log('Valores del Punto 3: | X = ' + P3.x + ' | Y = ' + P3.y + ' |');
+
+console.log(' <<Sumo la copia del Punto 1 y el Punto 3>>');
+var PuntoSuma = P1Copia.suma(P3);
+
+console.log('Resultado de la suma de las coordenadas de la copia de P1 y P3');
+console.log(
+  'Coordenada X: ' + PuntoSuma.x + '  | ' + ' Coordenada Y: ' + PuntoSuma.y
+);
+console.log('--------------------------------------------');
